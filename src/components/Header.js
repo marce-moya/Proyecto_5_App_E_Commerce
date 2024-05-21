@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import UserContext from '../context/User/UserContext'
 
-import GuitarLogo from './../assets/guitarlogo.svg'
+import GuitarLogo from './../assets/log_pet_shop.png'
 
 import LayoutContext from './../context/Layout/LayoutContext'
 import Sidebar from './Sidebar'

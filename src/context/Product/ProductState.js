@@ -8,41 +8,41 @@ import ProductReducer from "./ProductReducer"
 const ProductState = (props) => {
 
     const initialState = {
-        guitars: [],
-        guitar: [{
+        products: [],
+        product: [{
             id_: "",
-            nombre: "",
-            color: "",
+            SKU: "",
+            Nombre: "",
             precio: "",
-            imagen: ""
+            Descripción: ""
         }]
     }
 
     const [globalState, dispatch] = useReducer(ProductReducer, initialState)
 
-    const getGuitar = async (id) => {
+    const getProduct = async (id) => {
 
-        const res = await axiosClient.get(`/obtener-guitarra/${id}`)
+        const res = await axiosClient.get(`/obtener-producto/${id}`)
 
-        const guitar = res.data.guitar
+        const producto = res.data.products
 
         dispatch({
-            type: "GET_GUITAR",
-            payload: guitar
+            type: "GET_PRODUCT",
+            payload: product
         })
 
-        return guitar
+        return product
 
     }
 
 
-    const getGuitars = async () => {
+    const getProducts = async () => {
 
-        const res = await axiosClient.get("/obtener-guitarras")
+        const res = await axiosClient.get("/obtener-productos")
 
         dispatch({
-            type: "GET_GUITARS",
-            payload: res.data.guitarras
+            type: "GET_PRODUCTOS",
+            payload: res.data.products
         })
 
     }
@@ -61,10 +61,10 @@ const ProductState = (props) => {
     return (
         <ProductContext.Provider
             value={{
-                guitars: globalState.guitars,
-                guitar: globalState.guitar,
-                getGuitar,
-                getGuitars,
+                products: globalState.products,
+                producto: globalState.producto,
+                getProduct,
+                getProducts,
                 getPreferenceCheckoutMP       
             }}
         >

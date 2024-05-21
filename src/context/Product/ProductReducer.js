@@ -2,23 +2,23 @@ const reducer = (globalState, action) => {
 
     switch (action.type) {
 
-        case "GET_GUITARS":
+        case "GET_PRODUCTS":
             return {
                 ...globalState,
-                guitars: action.payload,
-                guitar: [{
+                products: action.payload,
+                product: [{
                     id_: "",
-                    nombre: "",
-                    color: "",
+                    SKU: "",
+                    Nombre: "",
                     precio: "",
-                    imagen: ""
+                    Descripción: ""
                 }]
             }
 
-        case "GET_GUITAR":
+        case "GET_PRODUCT":
             return {
                 ...globalState,
-                guitar: [action.payload]
+                product: [action.payload]
             }
 
         default: 

@@ -1,10 +1,10 @@
 import React from 'react'
-import ListGuitars from './ListGuitars'
+import ListProducts from './ListProducts'
 
 export default function Catalog() {
     return (
         <div>
-            <ListGuitars title="Todas las guitarras" />
+            <ListProducts title="Todos los productos" />
         </div>
     )
 }

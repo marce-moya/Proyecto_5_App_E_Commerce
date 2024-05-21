@@ -1,24 +1,24 @@
 import React, { useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 
-import Guitar from './../../assets/pexels-karolina-grabowska-4472061.jpg'
+import Product from '../../assets/log_pet_shop.png'
 
 import ProductContext from './../../context/Product/ProductContext'
 
 
-export default function ListGuitars(props) {
+export default function ListProdducts(props) {
 
   const ctx = useContext(ProductContext)
 
-  const { guitars, getGuitars } = ctx
+  const { products, getProducts } = ctx
 
   useEffect(() => {
 
-    const fetchGuitars = () => {
-      return getGuitars()
+    const fetchProducts = () => {
+      return getProducts()
     }
 
-    fetchGuitars()
+    fetchProducts()
 
   }, [])
 
@@ -32,7 +32,7 @@ export default function ListGuitars(props) {
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
 
           {
-            guitars.map((e) => {
+            products.map((e) => {
 
               return (
 
