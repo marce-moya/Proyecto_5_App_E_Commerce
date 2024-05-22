@@ -15,17 +15,17 @@ export default function Product() {
   const { productId } = params
 
   const ctxProduct = useContext(ProductContext)
-  const { guitar, getGuitar, getPreferenceCheckoutMP } = ctxProduct
-  const { nombre, precio, imagen, color } = guitar[0]
+  const { Product, getProduct, getPreferenceCheckoutMP } = ctxProduct
+  const { sku, nombre, precio, imagen } = Product[0]
 
   const ctxUser = useContext(UserContext)
   const { user } = ctxUser
 
   useEffect(() => {
 
-    const fetchGuitar = async () => {
+    const fetchProduct = async () => {
 
-        const res = await getGuitar(productId)      
+        const res = await getProduct(productId)      
 
         // MANEJO DE MERCADOPAGO.COM, SOLO SI HAY USUARIO
         if(user){
@@ -56,7 +56,7 @@ export default function Product() {
         }
       }
 
-    fetchGuitar()
+    fetchProduct()
 
   }, [])
 
@@ -82,7 +82,7 @@ const addCheckout = (id) => {
   return (
     <div className="bg-white">
 
-      {guitar.length === 0 ?
+      {product.length === 0 ?
         null :
         (
           <>
@@ -124,7 +124,7 @@ const addCheckout = (id) => {
                   <h2 className="text-3xl font-extrabold text-gray-400">Características</h2>
 
                   <p className="text-base text-gray-900 mt-6">
-                    <b>Precio</b>: ${precio} USD
+                    <b>Precio</b>: ${precio} CLP
                   </p>
 
                   <p className="text-base text-gray-900 mb-6">
@@ -137,7 +137,7 @@ const addCheckout = (id) => {
                     :
                     <Link to="/crear-cuenta">
                       <button type="button" className="mt-10 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Para adquirir, regístrate primero
+                        Para comprar, regístrate primero
                       </button>
                     </Link>
                   }

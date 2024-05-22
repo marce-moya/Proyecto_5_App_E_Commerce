@@ -1,29 +1,20 @@
 import './App.css';
 import Main from './components/Main'
 import Product from './components/Product'
-
-import Header from './components/Header';
-import Footer from './components/Footer';
-
+import Header from './components/Header'
+import Footer from './components/Footer'
 import Profile from './components/Profile'
-
 import Catalog from './components/Catalog'
-
-import {
-  BrowserRouter as Router,
-  Switch
-} from 'react-router-dom'
-
-import Login from './components/Login';
-import Register from './components/Register';
-
-import ProductState from './context/Product/ProductState';
-import UserState from './context/User/UserState';
+import About from './components/About'
+import {BrowserRouter as Router, Switch} from 'react-router-dom'
+import Login from './components/Login'
+import Register from './components/Register'
+import ProductState from './context/Product/ProductState'
+import UserState from './context/User/UserState'
 import LayoutState from './context/Layout/LayoutState'
-
-import AuthRoute from './components/Routes/AuthRoute';
+import AuthRoute from './components/Routes/AuthRoute'
 import PrivateRoute from './components/Routes/PrivateRoute'
-import PublicRoute from './components/Routes/PublicRoute';
+import PublicRoute from './components/Routes/PublicRoute'
 
 
 
@@ -53,6 +44,14 @@ function App() {
 
               {/* RUTA BASE */}
               <PublicRoute exact path="/" component={Main} />
+
+              {/* RUTA PUBLICA */}
+              <PublicRoute exact path="/about" component={About} />
+
+              {/* RUTA DESCONOCIDA */}
+              <Route path="*"><Redirect to="/"></Redirect></Route>
+              
+              
 
             </Switch>
 
