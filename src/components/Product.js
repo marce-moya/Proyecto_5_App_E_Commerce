@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react'
-
 import ProductContext from './../context/Product/ProductContext'
 import UserContext from './../context/User/UserContext'
 
@@ -82,7 +81,7 @@ const addCheckout = (id) => {
   return (
     <div className="bg-white">
 
-      {product.length === 0 ?
+      {Product.length === 0 ?
         null :
         (
           <>
@@ -128,7 +127,7 @@ const addCheckout = (id) => {
                   </p>
 
                   <p className="text-base text-gray-900 mb-6">
-                    <b>Color</b>: { color }
+                    <b>imagen</b>: { imagen }
                   </p>
 
                   {

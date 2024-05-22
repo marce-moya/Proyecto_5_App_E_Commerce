@@ -28,10 +28,10 @@ const ProductState = (props) => {
 
         dispatch({
             type: "GET_PRODUCT",
-            payload: product
+            payload: Product
         })
 
-        return product
+        return Product
 
     }
 

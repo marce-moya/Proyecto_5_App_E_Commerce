@@ -15,6 +15,7 @@ import LayoutState from './context/Layout/LayoutState'
 import AuthRoute from './components/Routes/AuthRoute'
 import PrivateRoute from './components/Routes/PrivateRoute'
 import PublicRoute from './components/Routes/PublicRoute'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
 
 
@@ -49,8 +50,9 @@ function App() {
               <PublicRoute exact path="/about" component={About} />
 
               {/* RUTA DESCONOCIDA */}
-              <Route path="*"><Redirect to="/"></Redirect></Route>
-              
+                <Route path="*">
+                  <Redirect to="/" />
+                </Route>
               
 
             </Switch>
