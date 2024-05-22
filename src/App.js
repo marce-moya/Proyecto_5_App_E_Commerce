@@ -16,10 +16,50 @@ import AuthRoute from './components/Routes/AuthRoute'
 import PrivateRoute from './components/Routes/PrivateRoute'
 import PublicRoute from './components/Routes/PublicRoute'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import './App.css';
 
 
 
-function App() {
+const App = () => {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    const fetchProductos = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/productos');
+        const data = await response.json();
+        setProductos(data);
+      } catch (error) {
+        console.error('Error al obtener los productos:', error);
+      }
+    };
+
+    fetchProductos();
+  }, []);
+
+  return (
+    <div>
+      <h1>Productos para Mascotas</h1>
+      <div className="productos">
+        {productos.map((producto) => (
+          <div key={producto._id} className="producto">
+            <h2>{producto.nombre}</h2>
+            <p>{producto.descripcion}</p>
+            <p>Precio: ${producto.precio}</p>
+            <img src={producto.imagen} alt={producto.nombre} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default App;
+
+
+const AppRutas = () => {
+
   return (
     <>
     <LayoutState>
@@ -66,4 +106,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppRutas;

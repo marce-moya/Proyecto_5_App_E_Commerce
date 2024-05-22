@@ -1,7 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
-
 import { Route, Redirect } from 'react-router-dom'
-
 import UserContext from './../../context/User/UserContext'
 
 export default function PrivateRoute({ component: Component, ...props }) {

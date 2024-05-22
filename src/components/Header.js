@@ -1,9 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import UserContext from '../context/User/UserContext'
-
-import GuitarLogo from './../assets/log_pet_shop.png'
-
+import GatoLogo from './../assets/log_pet_shop.png'
 import LayoutContext from './../context/Layout/LayoutContext'
 import Sidebar from './Sidebar'
 
@@ -40,7 +38,7 @@ export default function Header() {
 
                   <div className="flow-root" onClick={toggleMobileSidebar}>
                     <Link to="/">
-                      <img className="h-8 w-auto" src={GuitarLogo} alt="Guitar LATAM" />
+                      <img className="h-8 w-auto" src={GatoLogo} alt="Pets LATAM" />
                     </Link>
                   </div>
 
@@ -81,9 +79,9 @@ export default function Header() {
 
                 <div className="border-t border-gray-200 py-6 px-4">
                   <div className="-m-2 p-2 flex items-center">
-                    <img src="https://catamphetamine.gitlab.io/country-flag-icons/3x2/US.svg" alt="" className="w-5 h-auto block flex-shrink-0" />
+                    <img src="https://catamphetamine.gitlab.io/country-flag-icons/3x2/CL.svg" alt="" className="w-5 h-auto block flex-shrink-0" />
                     <span className="ml-3 block text-base font-medium text-gray-900">
-                      USD
+                      CLP
                     </span>
                   </div>
                 </div>
@@ -99,7 +97,7 @@ export default function Header() {
             <div className="border-b border-gray-200">
               <div className="h-16 flex items-center">
                 <button onClick={toggleMobileSidebar} type="button" className="bg-orange p-2 rounded-md text-gray-400 lg:hidden">
-                  <span className="sr-only">Open menu</span>
+                  <span className="sr-only">Abrir menu</span>
                   <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
@@ -108,8 +106,8 @@ export default function Header() {
                 <Link to="/">
                   <div className="ml-4 mr-4 flex lg:ml-0">
 
-                    <img className="h-8 w-auto" src={GuitarLogo} alt="Guitar LATAM" />
-                    <span className="font-medium italic mt-1">GUITARWORLD</span>
+                    <img className="h-8 w-auto" src={GatoLogo} alt="Pets LATAM" />
+                    <span className="font-medium italic mt-1">PETSWORLD</span>
 
                   </div>
                 </Link>
@@ -121,7 +119,7 @@ export default function Header() {
                     <div className="flex">
                       <div className="relative flex">
                         <Link to="/catalogo" className="border-transparent text-gray-700 hover:text-gray-800 relative z-10 flex items-center transition-colors ease-out duration-200 text-sm font-medium border-b-2 -mb-px pt-px" aria-expanded="false">
-                          Catálogo de Guitarras
+                          Catálogo de Productos
                         </Link>
                       </div>
                     </div>
@@ -132,9 +130,9 @@ export default function Header() {
 
                   <div className="hidden lg:ml-8 lg:flex">
                     <div className="mx-10 text-gray-700 hover:text-gray-800 flex items-center">
-                      <img src="https://catamphetamine.gitlab.io/country-flag-icons/3x2/US.svg" alt="" className="w-5 h-auto block flex-shrink-0" />
+                      <img src="https://catamphetamine.gitlab.io/country-flag-icons/3x2/CL.svg" alt="" className="w-5 h-auto block flex-shrink-0" />
                       <span className="ml-3 block text-sm font-medium">
-                        USD
+                        CLP
                       </span>
                     </div>
                   </div>
