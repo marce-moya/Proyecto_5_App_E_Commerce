@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import UserContext from '../context/User/UserContext'
 import GatoLogo from './../assets/log_pet_shop.png'
@@ -7,20 +7,27 @@ import Sidebar from './Sidebar'
 
 export default function Header() {
 
-  const ctxLayout = useContext(LayoutContext)
+  const ctxLayout = useContext(LayoutContext);
+  if (!ctxLayout) {
+    console.error('LayoutContext is null');
+    return null;
+  }
+
 
   const { setMobileNavOn, toggleMobileSidebar } = ctxLayout
+
+
 
   const ctxUser = useContext(UserContext)
 
   const { logoutUser } = ctxUser
 
   return (
-    <>
+   <header> 
+    
       <div className="bg-white">
 
-        {
-          setMobileNavOn ?
+        {setMobileNavOn ?
             <div className="fixed inset-0 flex z-40 lg:hidden" role="dialog" aria-modal="true">
               <div className="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
 
@@ -73,7 +80,7 @@ export default function Header() {
                           </Link>
                         </div>
                       </>
-                  }
+                  };
 
                 </div>
 
@@ -89,7 +96,7 @@ export default function Header() {
             </div>
             :
             null
-        }
+        };
 
         <header className="relative bg-white">
 
@@ -169,6 +176,6 @@ export default function Header() {
         </header>
         <Sidebar />
       </div>
-    </>
+    </header>
   )
 }

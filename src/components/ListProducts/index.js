@@ -1,26 +1,29 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-
-import Product from '../../assets/log_pet_shop.png'
-
 import ProductContext from './../../context/Product/ProductContext'
 
 
 export default function ListProdducts(props) {
 
   const ctx = useContext(ProductContext)
-
-  const { products, getProducts } = ctx
+  const { products, getProducts } = ctx;
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
 
-    const fetchProducts = () => {
-      return getProducts()
-    }
+    const fetchProducts = async () => {
+      try {
+        await getProducts();
+        setLoading(false);
+      } catch (error) {
+        console.error('Error al obtener los productos:', error);
+        setLoading(false); // para detener
+      }
+    };
 
-    fetchProducts()
+    fetchProducts();
 
-  }, [])
+  }, [getProducts]);
 
   return (
     <div className="bg-white">
@@ -29,39 +32,33 @@ export default function ListProdducts(props) {
           {props.title}
         </h2>
 
-        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        {loading ? (
+          <p className="text-center my-8">Cargando productos...</p>
+        ) : (
 
-          {
-            products.map((e) => {
+          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
 
-              return (
+            {products.map((e) => (
 
-                <Link to={`/${e._id}`} key={e._id}>
-                  <div className="group relative">
-                    <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                      <img src={ e.imagen} alt="Guitar" className="w-full h-full object-center object-cover lg:w-full lg:h-full" />
-                    </div>
-                    <div className="mt-4 flex justify-between">
-                      <div>
-                        <h3 className="text-sm text-gray-700">
-                          {e.nombre}
-                        </h3>
-                        <p className="mt-1 text-sm text-gray-500">
-                          {e.color}
-                        </p>
-                      </div>
-                      <p className="text-sm font-medium text-gray-900">${e.precio}</p>
-                    </div>
+              <Link to={`/${e._id}`} key={e._id}>
+                <div className="group relative">
+                  <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
+                    <img src={e.imagen} alt="Product" className="w-full h-full object-center object-cover lg:w-full lg:h-full" />
                   </div>
-                </Link>
+                  <div className="mt-4 flex justify-between">
+                    <div>
+                      <h3 className="text-sm text-gray-700">{e.nombre}</h3>
+                      <p className="mt-1 text-sm text-gray-500">${e.precio}</p>
+                    </div>
+                    <p className="text-sm font-medium text-gray-900">{e.descripción}</p>
+                  </div>
+                </div>
+              </Link>
 
-              )
-            })
-          }
-
-
-        </div>
-      </div>
+              ))}
+            </div>
+          )}
+      </div>  
     </div>
-  )
+  );
 }

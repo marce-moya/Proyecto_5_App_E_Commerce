@@ -1,5 +1,5 @@
-import { createContext } from "react";  
+import { createContext } from 'react';
 
-const LayoutContext = createContext(null)
+const LayoutContext = createContext();
 
-export default LayoutContext
+export default LayoutContext;

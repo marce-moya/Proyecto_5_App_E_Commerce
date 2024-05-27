@@ -1,39 +1,37 @@
 import { useReducer } from 'react'
-
 import axiosClient from "./../../config/axios"
-
 import ProductContext from "./ProductContext"
 import ProductReducer from "./ProductReducer"
+
 
 const ProductState = (props) => {
 
     const initialState = {
         products: [],
-        product: [{
-            id_: "",
+        producto: {  
+            _id: "",
             SKU: "",
             Nombre: "",
             precio: "",
             Descripción: ""
-        }]
+        }
     }
-
-    const [globalState, dispatch] = useReducer(ProductReducer, initialState)
+    const [globalState, dispatch] = useReducer(ProductReducer, initialState);
 
     const getProduct = async (id) => {
 
-        const res = await axiosClient.get(`/obtener-producto/${id}`)
+        const res = await axiosClient.get(`/obtener-producto/${id}`);
 
-        const producto = res.data.products
+        const Producto = res.data.products;
 
         dispatch({
             type: "GET_PRODUCT",
-            payload: Product
-        })
+            payload: Producto
+        });
 
-        return Product
+        return Producto;
 
-    }
+    };
 
 
     const getProducts = async () => {
@@ -43,19 +41,19 @@ const ProductState = (props) => {
         dispatch({
             type: "GET_PRODUCTOS",
             payload: res.data.products
-        })
+        });
 
-    }
+    };
 
     const getPreferenceCheckoutMP = async (dataform) => {
 
-        console.log("dataform:", dataform)
+        console.log("dataform:", dataform);
 
-        const res = await axiosClient.post("/mercadopago", dataform)
+        const res = await axiosClient.post("/mercadopago", dataform);
 
-        return res.data.checkoutId
+        return res.data.checkoutId;
 
-    }
+    };
 
 
     return (
@@ -70,9 +68,9 @@ const ProductState = (props) => {
         >
             { props.children }
         </ProductContext.Provider>
-    )
+    );
 
-}
+};
 
 
 export default ProductState

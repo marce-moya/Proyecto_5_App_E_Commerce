@@ -1,5 +1,4 @@
 import { useReducer } from "react"
-
 import LayoutContext from "./LayoutContext"
 import LayoutReducer from "./LayoutReducer"
 
@@ -8,8 +7,8 @@ const LayoutState = (props) => {
     
     const initialState = {
         setCheckoutOn: false,
-        setMobileNavOn: false
-    }
+        setMobileNavOn: false,
+    };
 
 
     const [globalState, dispatch] = useReducer(LayoutReducer, initialState)
@@ -18,7 +17,7 @@ const LayoutState = (props) => {
     const toggleMobileSidebar = () => {
 
         dispatch({
-            type: "SET_MOBILE_SIDEBAR"
+            type: "SET_MOBILE_NAV_ON"
         })
 
     }

@@ -1,16 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
-import reportWebVitals from './reportWebVitals'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { ProductProvider } from './context/Product/ProductContext';
+import './index.css';
+import AppRutas from './components/Routes/AppRutas';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    <AppRutas />
+    <ProductProvider>
+      <AppRutas />
+    </ProductProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
 
 reportWebVitals();

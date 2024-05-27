@@ -13,7 +13,7 @@ const UserState = (props) => {
         },
         authStatus: false,
         loading: true
-    }
+    };
 
 
     const [ globalState, dispatch ] = useReducer(UserReducer, initialState)

@@ -7,6 +7,8 @@ import {
   useParams
 } from 'react-router-dom'
 
+
+
 export default function Product() {
 
   const params = useParams()
@@ -15,14 +17,14 @@ export default function Product() {
 
   const ctxProduct = useContext(ProductContext)
   const { Product, getProduct, getPreferenceCheckoutMP } = ctxProduct
-  const { sku, nombre, precio, imagen } = Product[0]
+  const { SKU, nombre, precio, imagen } = Product[0]
 
   const ctxUser = useContext(UserContext)
   const { user } = ctxUser
 
   useEffect(() => {
 
-    const fetchProduct = async () => {
+    const fetchCatalog = async () => {
 
         const res = await getProduct(productId)      
 
@@ -55,7 +57,7 @@ export default function Product() {
         }
       }
 
-    fetchProduct()
+    fetchCatalog()
 
   }, [])
 
@@ -145,7 +147,7 @@ const addCheckout = (id) => {
 
                 <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
                   <div>
-                    <h3 className="sr-only">Description</h3>
+                    <h3 className="sr-only">Descripción</h3>
 
                     <div className="space-y-6">
                       <p className="text-base text-gray-900">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tempus malesuada odio, a euismod odio sagittis id. Phasellus volutpat dui rutrum ligula dapibus tempor. Curabitur in justo in neque aliquet sagittis quis nec augue. In mattis, lectus non imperdiet imperdiet, est lectus posuere felis, nec fermentum eros dolor ut dolor. Fusce finibus velit vitae cursus vehicula. Donec accumsan tincidunt est pulvinar suscipit. Mauris bibendum id magna at iaculis. Mauris interdum dolor quis tortor porta, et consectetur nisl viverra. Vivamus in congue mi, in feugiat enim. Etiam convallis mauris dui, quis luctus purus consectetur id. Maecenas pharetra vitae tellus fringilla congue. Quisque aliquam eget sem vel aliquam. </p>
@@ -169,7 +171,7 @@ const addCheckout = (id) => {
                   </div>
 
                   <div className="mt-10">
-                    <h2 className="text-sm font-medium text-gray-900">Details</h2>
+                    <h2 className="text-sm font-medium text-gray-900">Detalles</h2>
 
                     <div className="mt-4 space-y-6">
                       <p className="text-sm text-gray-600">In a consectetur urna. Donec et ipsum turpis. Morbi in lectus vel turpis faucibus feugiat vel ac urna. Suspendisse imperdiet congue dolor, non mattis est porttitor in. Etiam commodo quam vitae congue eleifend. In a felis id velit imperdiet varius a at turpis. Nullam porta, ligula quis aliquet iaculis, lectus magna faucibus odio, eget venenatis risus lectus vitae sem.</p>
