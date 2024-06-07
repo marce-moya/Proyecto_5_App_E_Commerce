@@ -1,17 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { ProductProvider } from './context/Product/ProductContext';
+import { LayoutProvider } from './context/Layout/LayoutContext';
 import './index.css';
 import AppRutas from './components/Routes/AppRutas';
 import reportWebVitals from './reportWebVitals';
+import { UserProvider } from './context/User/UserContext';
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(
   <React.StrictMode>
     <ProductProvider>
-      <AppRutas />
+      <LayoutProvider>
+        <UserProvider>
+          <AppRutas />
+        </UserProvider>
+      </LayoutProvider>
     </ProductProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 
 reportWebVitals();

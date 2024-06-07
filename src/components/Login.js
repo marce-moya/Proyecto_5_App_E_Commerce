@@ -42,10 +42,8 @@ export default function Login() {
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           ¿Aún sin cuenta? &nbsp;
-          <Link to="crear-cuenta">
-            <a className="font-medium text-yellow-500 hover:text-yellow-300">
-              Regístrate aquí.
-            </a>
+          <Link to="crear-cuenta" className="font-medium text-yellow-500 hover:text-yellow-300">
+            Regístrate aquí.
           </Link>
         </p>
       </div>

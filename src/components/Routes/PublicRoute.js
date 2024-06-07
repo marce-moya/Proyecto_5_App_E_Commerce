@@ -1,34 +1,36 @@
-import React, {useContext, useEffect, useState} from 'react'
-import { Route, Redirect } from 'react-router-dom'
-import UserContext from './../../context/User/UserContext'
+import React, { useContext, useEffect, useState } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import UserContext from './../../context/User/UserContext';
 
-export default function PublicRoute({ component: Component, ...props }) {
+export default function PublicRoute({ component: Component, ...rest }) {
+  const userCtx = useContext(UserContext);
+  const { authStatus, verifyingToken } = userCtx;
+  const [loading, setLoading] = useState(true);
 
-    const userCtx = useContext(UserContext)
-    
-    const { authStatus, verifyingToken } = userCtx
+  useEffect(() => {
+    const verifyToken = async () => {
+      try {
+        await verifyingToken();
+      } catch (error) {
+        console.error('Error verifying token:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    const [loading, setLoading] = useState(true)
+    verifyToken();
+  }, [verifyingToken]);
 
-    useEffect(async () => {
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-        await verifyingToken()
-        setLoading(false)
-
-    }, [authStatus])
-
-    return (
-        <Route {...props} render={ props => {            
-
-            if(loading) return null
-
-            return authStatus ? 
-                (<Component {...props} />)
-                :
-                (<Component />)
-            }
-        } />
-    )
-        
-    
+  return (
+    <Route 
+      {...rest} 
+      render={(props) => (
+        authStatus ? <Component {...props} /> : <Redirect to="/login" />
+      )} 
+    />
+  );
 }
